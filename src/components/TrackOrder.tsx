@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Package, Search, ClipboardCheck, Clock, Check, Truck, Home, User, Mail, DollarSign } from 'lucide-react';
+import { Package, Search, ClipboardCheck, Clock, Check, Truck, Home, User } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import type { OrderStatus } from '../types';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, ShieldCheck, Heart, Layers, Eye } from 'lucide-react';
+import { Star, Layers, Eye } from 'lucide-react';
 import type { Product } from '../types';
 import { useAppContext } from '../context/AppContext';
 

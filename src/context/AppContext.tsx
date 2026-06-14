@@ -233,7 +233,6 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     // Deduct stock levels for purchased products inside order
     setInventory((prev) =>
       prev.map((inv) => {
-        const boughtItemIndices = cart.map((c) => c.product.id);
         const boughtQty = cart
           .filter((c) => c.product.id === inv.productId)
           .reduce((sum, item) => sum + item.quantity, 0);

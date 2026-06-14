@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { KeySquare, ShieldAlert, Lock, UserCheck, Key, ArrowRight } from 'lucide-react';
+import { ShieldAlert, Lock, UserCheck, Key, ArrowRight } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 
 export const AdminLogin: React.FC = () => {

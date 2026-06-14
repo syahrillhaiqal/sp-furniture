@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Plus, Minus, ShoppingCart, RefreshCw, Star, ShieldCheck, Heart } from 'lucide-react';
+import { ArrowLeft, Plus, Minus, ShoppingCart, RefreshCw, Star, ShieldCheck } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import { WOOD_FINISHES, FABRICS } from '../data';
 import type { CartItem, CustomOption } from '../types';

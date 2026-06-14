@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowLeft, CheckCircle2, Copy, FileText, Clipboard, MapPin, Truck, ChevronRight } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Copy, FileText, ChevronRight } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import type { CustomerDetails, Order } from '../types';
 
 export const Checkout: React.FC = () => {
-  const { cart, createOrder, setRoute, currentRoute } = useAppContext();
+  const { cart, createOrder, setRoute } = useAppContext();
 
   // Selected state for placement
   const [formData, setFormData] = useState<CustomerDetails>({

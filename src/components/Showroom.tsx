@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, SlidersHorizontal, ArrowUpDown, Shield, ThumbsUp, Calendar, ArrowRight } from 'lucide-react';
+import { Search, SlidersHorizontal, ArrowUpDown, Shield, ThumbsUp } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import { ProductCard } from './ProductCard';
 

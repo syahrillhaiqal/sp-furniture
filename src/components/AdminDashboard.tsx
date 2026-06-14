@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import {
   TrendingUp,
-  Package,
   Boxes,
   ClipboardList,
   AlertTriangle,
   Plus,
   Edit2,
   Trash2,
-  Check,
   Send,
   LogOut,
   ChevronRight,
@@ -16,12 +14,10 @@ import {
   BarChart3,
   DollarSign,
   ShoppingCart,
-  UserCheck,
   Tag
 } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
-import type { Product, OrderStatus, Order, CustomOption } from '../types';
-import { WOOD_FINISHES, FABRICS } from '../data';
+import type { Product, OrderStatus, Order } from '../types';
 
 export const AdminDashboard: React.FC = () => {
   const {
@@ -147,7 +143,6 @@ export const AdminDashboard: React.FC = () => {
   
   // High stock warn list counts
   const lowStockProductsCount = inventory.filter((inv) => {
-    const p = products.find((prod) => prod.id === inv.productId);
     return inv.stockLevel <= inv.reorderPoint;
   }).length;
 
