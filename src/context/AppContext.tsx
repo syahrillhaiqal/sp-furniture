@@ -1,8 +1,17 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Product, Order, InventoryItem, CartItem, CustomerDetails, OrderStatus } from '../types';
 import { INITIAL_PRODUCTS, INITIAL_INVENTORY, INITIAL_ORDERS } from '../data';
+import { AppContext } from './appContextCore';
 
 const getRouteFromPathname = (pathname: string) => {
+  if (pathname === '/' || pathname === '/home') {
+    return 'home';
+  }
+
+  if (pathname === '/showroom') {
+    return 'showroom';
+  }
+
   if (pathname === '/admin') {
     return 'admin-login';
   }
@@ -15,6 +24,14 @@ const getRouteFromPathname = (pathname: string) => {
 };
 
 const getPathnameFromRoute = (route: string) => {
+  if (route === 'home') {
+    return '/';
+  }
+
+  if (route === 'showroom') {
+    return '/showroom';
+  }
+
   if (route === 'admin-login') {
     return '/admin';
   }
@@ -26,12 +43,12 @@ const getPathnameFromRoute = (route: string) => {
   return '/';
 };
 
-interface AppContextType {
+export interface AppContextType {
   products: Product[];
   inventory: InventoryItem[];
   orders: Order[];
   cart: CartItem[];
-  currentRoute: string; // 'home' | 'detail' | 'cart' | 'checkout' | 'track' | 'admin-login' | 'admin-dashboard'
+  currentRoute: string; // 'home' | 'showroom' | 'detail' | 'cart' | 'checkout' | 'track' | 'admin-login' | 'admin-dashboard'
   currentProductDetailId: string | null;
   adminTab: 'products' | 'inventory' | 'orders' | 'reports';
   adminLoggedIn: boolean;
@@ -64,8 +81,6 @@ interface AppContextType {
   login: (pw: string) => boolean;
   logout: () => void;
 }
-
-const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Try to load initial state or fallback to defaults
@@ -311,12 +326,4 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       {children}
     </AppContext.Provider>
   );
-};
-
-export const useAppContext = () => {
-  const context = useContext(AppContext);
-  if (!context) {
-    throw new Error('useAppContext must be used within an AppContextProvider');
-  }
-  return context;
 };

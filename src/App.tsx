@@ -1,6 +1,7 @@
 import React from 'react';
-import { AppContextProvider, useAppContext } from './context/AppContext';
+import { AppContextProvider } from './context/AppContext';
 import { Navbar } from './components/Navbar';
+import { LandingPage } from './components/LandingPage';
 import { Showroom } from './components/Showroom';
 import { ProductDetail } from './components/ProductDetail';
 import { Cart } from './components/Cart';
@@ -9,6 +10,7 @@ import { TrackOrder } from './components/TrackOrder';
 import { AdminLogin } from './components/AdminLogin';
 import { AdminDashboard } from './components/AdminDashboard';
 import { motion, AnimatePresence } from 'motion/react';
+import { useAppContext } from './context/useAppContext';
 
 const MainAppLayout: React.FC = () => {
   const { currentRoute, adminLoggedIn } = useAppContext();
@@ -18,6 +20,8 @@ const MainAppLayout: React.FC = () => {
   const renderActiveRoute = () => {
     switch (currentRoute) {
       case 'home':
+        return <LandingPage />;
+      case 'showroom':
         return <Showroom />;
       case 'detail':
         return <ProductDetail />;
@@ -32,7 +36,7 @@ const MainAppLayout: React.FC = () => {
       case 'admin-dashboard':
         return adminLoggedIn ? <AdminDashboard /> : <AdminLogin />;
       default:
-        return <Showroom />;
+        return <LandingPage />;
     }
   };
 
@@ -43,7 +47,7 @@ const MainAppLayout: React.FC = () => {
         <Navbar />
 
         {/* Dynamic transition view stage wrapped in AnimatePresence */}
-        <main className="max-w-7xl mx-auto py-2">
+        <main className="py-2">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentRoute}
@@ -69,22 +73,7 @@ const MainAppLayout: React.FC = () => {
               Crafting premium wood creations and architectural designs for modern spaces across the globe since 1998. Guaranteed legacy quality.
             </p>
           </div>
-          <div>
-            <span className="block font-serif font-bold text-stone-800 text-xs uppercase tracking-wider mb-3">
-              Prototype Sandbox Services
-            </span>
-            <ul className="text-xs text-stone-500 space-y-2 font-medium">
-              <li>
-                <span className="hover:text-stone-800 cursor-pointer">B2C Contemporary Showroom</span>
-              </li>
-              <li>
-                <span className="hover:text-stone-800 cursor-pointer">Order Progress Tracking</span>
-              </li>
-              <li>
-                <span className="hover:text-stone-800 cursor-pointer">Administrative Ops Panel (B2E)</span>
-              </li>
-            </ul>
-          </div>
+          
           <div>
             <span className="block font-serif font-bold text-stone-800 text-xs uppercase tracking-wider mb-3">
               Office Contacts
@@ -97,7 +86,7 @@ const MainAppLayout: React.FC = () => {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-stone-200 text-center text-[10px] text-stone-400 font-mono">
-          © {new Date().getFullYear()} SP HOME FURNITURE ENTERPRISE (PVT) LTD. ALL RIGHTS RESERVED. SECURED STAFF HUD.
+          © {new Date().getFullYear()} SP HOME FURNITURE ENTERPRISE. ALL RIGHTS RESERVED.
         </div>
       </footer>
     </div>

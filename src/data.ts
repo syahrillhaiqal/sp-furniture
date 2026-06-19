@@ -128,6 +128,102 @@ export const INITIAL_PRODUCTS: Product[] = [
     customizable: false,
     rating: 4.5,
     featured: true
+  },
+  {
+    id: 'prod-sectional',
+    name: 'Calm Horizon Modular Sectional',
+    category: 'Living Room',
+    price: 1890,
+    description: 'A generous modular lounge system with deep feather-topped seating, concealed connectors, and a low profile silhouette for modern family spaces.',
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000&h=1200',
+    specs: {
+      dimensions: 'W: 126" x D: 82" x H: 32"',
+      material: 'Solid hardwood frame, high-resilience foam, performance upholstery',
+      warranty: '10-Year Frame Warranty'
+    },
+    customizable: true,
+    rating: 4.9,
+    featured: true
+  },
+  {
+    id: 'prod-sideboard',
+    name: 'Noir Arc Walnut Sideboard',
+    category: 'Dining Room',
+    price: 1190,
+    description: 'A long, streamlined storage piece with soft-close doors and balanced proportions for dining or gallery-style living spaces.',
+    image: 'https://images.unsplash.com/photo-1595514535215-4d6b3a2a3f17?auto=format&fit=crop&q=80&w=1000',
+    specs: {
+      dimensions: 'W: 68" x D: 18" x H: 31"',
+      material: 'American walnut veneer, engineered core, brushed brass pulls',
+      warranty: '5-Year Cabinet Warranty'
+    },
+    customizable: true,
+    rating: 4.7,
+    featured: false
+  },
+  {
+    id: 'prod-nightstand',
+    name: 'Luna Floating Nightstand',
+    category: 'Bedroom',
+    price: 320,
+    description: 'Compact bedside storage with a floating frame and integrated cable opening for minimalist bedroom arrangements.',
+    image: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&q=80&w=1000',
+    specs: {
+      dimensions: 'W: 22" x D: 16" x H: 10"',
+      material: 'Oak veneer, powder-coated steel bracket, soft-close drawer',
+      warranty: '3-Year Furniture Warranty'
+    },
+    customizable: false,
+    rating: 4.6,
+    featured: false
+  },
+  {
+    id: 'prod-lounge-chair',
+    name: 'Harbor Sling Accent Chair',
+    category: 'Living Room',
+    price: 560,
+    description: 'A relaxed accent chair with a tailored sling seat, curved wood frame, and a low lounge posture.',
+    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1000',
+    specs: {
+      dimensions: 'W: 30" x D: 33" x H: 31"',
+      material: 'Bent ash frame, removable upholstery cover, dense seat cushion',
+      warranty: '4-Year Frame Warranty'
+    },
+    customizable: true,
+    rating: 4.8,
+    featured: false
+  },
+  {
+    id: 'prod-desk-chair',
+    name: 'Vertex Ergonomic Office Chair',
+    category: 'Office',
+    price: 690,
+    description: 'Designed for long sessions at the desk, this task chair blends mesh support, padded comfort, and a refined silhouette.',
+    image: 'https://images.unsplash.com/photo-1505797149-3b3c0f4d3c4f?auto=format&fit=crop&q=80&w=1000',
+    specs: {
+      dimensions: 'W: 28" x D: 27" x H: 45"',
+      material: 'Breathable mesh, aluminum base, molded lumbar support',
+      warranty: '5-Year Mechanism Warranty'
+    },
+    customizable: false,
+    rating: 4.7,
+    featured: true
+  },
+  {
+    id: 'prod-outdoor-lounge',
+    name: 'Terra Open-Air Lounge Set',
+    category: 'Outdoor',
+    price: 2240,
+    description: 'A weather-ready lounge group with modular seats, teak accents, and durable outdoor cushions for terraces and patios.',
+    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1000',
+    specs: {
+      dimensions: 'Modular set: 2 seat units + corner + coffee table',
+      material: 'Powder-coated aluminum, teak details, UV-resistant fabric',
+      warranty: '6-Year Outdoor Warranty'
+    },
+    customizable: true,
+    rating: 4.8,
+    featured: false
   }
 ];
 
@@ -138,7 +234,13 @@ export const INITIAL_INVENTORY: InventoryItem[] = [
   { productId: 'prod-bed', stockLevel: 4, reorderPoint: 2 },
   { productId: 'prod-bookshelf', stockLevel: 22, reorderPoint: 8 },
   { productId: 'prod-desk', stockLevel: 11, reorderPoint: 4 },
-  { productId: 'prod-patio', stockLevel: 3, reorderPoint: 2 }
+  { productId: 'prod-patio', stockLevel: 3, reorderPoint: 2 },
+  { productId: 'prod-sectional', stockLevel: 6, reorderPoint: 2 },
+  { productId: 'prod-sideboard', stockLevel: 9, reorderPoint: 3 },
+  { productId: 'prod-nightstand', stockLevel: 18, reorderPoint: 6 },
+  { productId: 'prod-lounge-chair', stockLevel: 15, reorderPoint: 5 },
+  { productId: 'prod-desk-chair', stockLevel: 12, reorderPoint: 4 },
+  { productId: 'prod-outdoor-lounge', stockLevel: 5, reorderPoint: 2 }
 ];
 
 export const INITIAL_ORDERS: Order[] = [

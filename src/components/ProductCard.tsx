@@ -1,7 +1,8 @@
 import React from 'react';
-import { Star, Layers, Eye } from 'lucide-react';
+import { Star, Layers, ArrowRight } from 'lucide-react';
 import type { Product } from '../types';
-import { useAppContext } from '../context/AppContext';
+import { useAppContext } from '../context/useAppContext';
+import { formatRM } from '../utils/currency';
 
 interface ProductCardProps {
   product: Product;
@@ -17,7 +18,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isLowStock = stockLevel > 0 && stockLevel <= (stockItem?.reorderPoint || 3);
 
   return (
-    <div className="group bg-white rounded-xl border border-stone-200 overflow-hidden hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 flex flex-col h-full">
+    <button
+      type="button"
+      onClick={() => setRoute('detail', { productId: product.id })}
+      className="group bg-white rounded-xl border border-stone-200 overflow-hidden hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 flex flex-col h-full text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-offset-2"
+      aria-label={`View and build ${product.name}`}
+    >
       {/* Product Image Stage */}
       <div className="relative pt-[75%] bg-stone-100 overflow-hidden">
         <img
@@ -59,34 +65,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {/* Product Information Body */}
       <div className="p-5 flex-1 flex flex-col justify-between">
         <div>
-          {/* Header & Rating */}
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center text-amber-500">
               <Star size={14} className="fill-current" />
               <span className="text-xs font-bold ml-1 text-stone-700">{product.rating.toFixed(1)}</span>
             </div>
-            <span className="text-[11px] font-mono text-stone-400">ID: {product.id}</span>
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400">Tap card to build</span>
           </div>
 
           <h3 className="font-serif text-base font-semibold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-1">
             {product.name}
           </h3>
-
-          <p className="text-xs text-stone-500 mt-1.5 mb-4 line-clamp-2 h-8 leading-relaxed">
-            {product.description}
-          </p>
-
-          {/* Quick Specifications Detail */}
-          <div className="bg-stone-50 rounded-lg p-2.5 my-3 border border-stone-100">
-            <div className="text-[10px] text-stone-600 flex justify-between gap-1">
-              <span className="text-stone-400 font-mono">Dims:</span>
-              <span className="font-medium text-stone-700 truncate max-w-[150px]">{product.specs.dimensions}</span>
-            </div>
-            <div className="text-[10px] text-stone-600 flex justify-between gap-1 mt-1">
-              <span className="text-stone-400 font-mono">Warr:</span>
-              <span className="font-medium text-stone-800">{product.specs.warranty}</span>
-            </div>
-          </div>
         </div>
 
         {/* Price & Action Footer */}
@@ -94,19 +83,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div>
             <span className="text-xs text-stone-400 block font-mono">Starting At</span>
             <span className="text-lg font-bold text-stone-900 font-serif">
-              ${product.price.toLocaleString()}
+              {formatRM(product.price)}
             </span>
           </div>
 
-          <button
-            onClick={() => setRoute('detail', { productId: product.id })}
-            className="bg-stone-900 hover:bg-amber-800 text-white rounded-md px-3.5 py-2 text-xs font-medium inline-flex items-center gap-1.5 transition-all group-hover:gap-2 shadow-sm cursor-pointer"
-          >
-            <Eye size={13} />
+          <div className="inline-flex items-center gap-1.5 rounded-md bg-stone-900 px-3.5 py-2 text-xs font-medium text-white transition-all group-hover:bg-amber-800">
+            <ArrowRight size={13} />
             <span>View & Build</span>
-          </button>
+          </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 };

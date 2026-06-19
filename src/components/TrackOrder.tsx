@@ -1,30 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Package, Search, ClipboardCheck, Clock, Check, Truck, Home, User } from 'lucide-react';
-import { useAppContext } from '../context/AppContext';
-import type { OrderStatus } from '../types';
+import React, { useState } from 'react';
+import { Package, Search, ClipboardCheck, Clock, Check, Truck, Home, User, type LucideIcon } from 'lucide-react';
+import { useAppContext } from '../context/useAppContext';
+import type { Order, OrderStatus } from '../types';
+import { formatRM } from '../utils/currency';
 
 export const TrackOrder: React.FC = () => {
   const { orders, trackingQuery } = useAppContext();
 
-  const [orderId, setOrderId] = useState('');
-  const [email, setEmail] = useState('');
+  const [orderId, setOrderId] = useState(() => trackingQuery?.orderId ?? '');
+  const [email, setEmail] = useState(() => trackingQuery?.email ?? '');
   const [searchError, setSearchError] = useState<string | null>(null);
-  const [matchedOrder, setMatchedOrder] = useState<any>(null);
-
-  // Sync with trackingQuery if passed from checkout automatically
-  useEffect(() => {
-    if (trackingQuery) {
-      setOrderId(trackingQuery.orderId);
-      setEmail(trackingQuery.email);
-      const matched = orders.find(
-        (o) => o.id.toLowerCase() === trackingQuery.orderId.toLowerCase() &&
-               o.customer.email.toLowerCase() === trackingQuery.email.toLowerCase()
-      );
-      if (matched) {
-        setMatchedOrder(matched);
-      }
+  const [matchedOrder, setMatchedOrder] = useState<Order | null>(() => {
+    if (!trackingQuery) {
+      return null;
     }
-  }, [trackingQuery, orders]);
+
+    return orders.find(
+      (o) => o.id.toLowerCase() === trackingQuery.orderId.toLowerCase() &&
+             o.customer.email.toLowerCase() === trackingQuery.email.toLowerCase()
+    ) ?? null;
+  });
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +38,7 @@ export const TrackOrder: React.FC = () => {
     }
   };
 
-  const handleQuickDemoClick = (demoOrder: any) => {
+  const handleQuickDemoClick = (demoOrder: Order) => {
     setOrderId(demoOrder.id);
     setEmail(demoOrder.customer.email);
     setMatchedOrder(demoOrder);
@@ -51,7 +46,7 @@ export const TrackOrder: React.FC = () => {
   };
 
   // Milestone mapping configuration
-  const milestones: { status: OrderStatus; label: string; desc: string; icon: any }[] = [
+  const milestones: { status: OrderStatus; label: string; desc: string; icon: LucideIcon }[] = [
     {
       status: 'Pending',
       label: 'Artisan Carpentry Planning',
@@ -253,7 +248,7 @@ export const TrackOrder: React.FC = () => {
                   Materials Summary Specifications
                 </h3>
                 <div className="divide-y divide-stone-200">
-                  {matchedOrder.items.map((item: any) => (
+                  {matchedOrder.items.map((item) => (
                     <div key={item.id} className="py-3 flex justify-between text-xs">
                       <div>
                         <strong className="text-stone-800 block text-xs">{item.product.name} × {item.quantity}</strong>
@@ -270,14 +265,14 @@ export const TrackOrder: React.FC = () => {
                           )}
                         </div>
                       </div>
-                      <span className="font-mono font-bold text-stone-700 shrink-0 select-all">${item.totalPrice.toLocaleString()}</span>
+                      <span className="font-mono font-bold text-stone-700 shrink-0 select-all">{formatRM(item.totalPrice)}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="pt-2 flex justify-between text-sm font-bold text-stone-800 border-t border-stone-200">
                   <span>Grand Total Bill</span>
-                  <span className="font-serif text-amber-900 font-black">${matchedOrder.totalAmount.toLocaleString()}</span>
+                  <span className="font-serif text-amber-900 font-black">{formatRM(matchedOrder.totalAmount)}</span>
                 </div>
               </div>
 

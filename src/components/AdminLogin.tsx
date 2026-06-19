@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ShieldAlert, Lock, UserCheck, Key, ArrowRight } from 'lucide-react';
-import { useAppContext } from '../context/AppContext';
+import { useAppContext } from '../context/useAppContext';
 
 export const AdminLogin: React.FC = () => {
   const { login, setRoute } = useAppContext();

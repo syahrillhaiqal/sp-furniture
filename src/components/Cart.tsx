@@ -1,12 +1,13 @@
 import React from 'react';
 import { ShoppingCart, Trash2, Plus, Minus, ArrowRight, ArrowLeft } from 'lucide-react';
-import { useAppContext } from '../context/AppContext';
+import { useAppContext } from '../context/useAppContext';
+import { formatRM } from '../utils/currency';
 
 export const Cart: React.FC = () => {
   const { cart, removeFromCart, updateCartQty, setRoute } = useAppContext();
 
   const subtotal = cart.reduce((sum, item) => sum + item.totalPrice, 0);
-  const estShipping = subtotal > 1500 ? 0 : 120; // free delivery above $1500
+  const estShipping = subtotal > 1500 ? 0 : 120; // free delivery above RM 1500
   const orderTotal = subtotal + estShipping;
 
   if (cart.length === 0) {
@@ -20,7 +21,7 @@ export const Cart: React.FC = () => {
           Add some handcrafted artisan furniture items to customize your workspace or residential living rooms.
         </p>
         <button
-          onClick={() => setRoute('home')}
+          onClick={() => setRoute('showroom')}
           className="mt-8 px-6 py-2.5 bg-amber-800 hover:bg-amber-900 text-white font-semibold rounded-lg text-sm transition-all shadow cursor-pointer"
         >
           Browse Our Collections
@@ -73,10 +74,10 @@ export const Cart: React.FC = () => {
                     <div className="text-right sm:text-right">
                       <span className="text-sm text-stone-400 block font-mono h-4">Subtotal</span>
                       <span className="text-base font-bold text-stone-900 font-serif">
-                        ${item.totalPrice.toLocaleString()}
+                        {formatRM(item.totalPrice)}
                       </span>
                       <span className="text-[10px] text-stone-400 block">
-                        (${(item.totalPrice / item.quantity).toLocaleString()} / unit)
+                        ({formatRM(item.totalPrice / item.quantity)} / unit)
                       </span>
                     </div>
                   </div>
@@ -118,7 +119,7 @@ export const Cart: React.FC = () => {
           </div>
 
           <button
-            onClick={() => setRoute('home')}
+            onClick={() => setRoute('showroom')}
             className="inline-flex items-center space-x-2 text-stone-500 hover:text-stone-800 text-xs font-bold uppercase tracking-widest cursor-pointer mt-4"
           >
             <ArrowLeft size={14} />
@@ -136,19 +137,19 @@ export const Cart: React.FC = () => {
             <div className="space-y-3 text-sm text-stone-600 border-b border-stone-200 pb-4">
               <div className="flex justify-between">
                 <span>Items Subtotal</span>
-                <span className="font-mono font-bold text-stone-900">${subtotal.toLocaleString()}</span>
+                <span className="font-mono font-bold text-stone-900">{formatRM(subtotal)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Tailored Artisan Courier Fee</span>
                 {estShipping === 0 ? (
                   <span className="text-emerald-700 font-semibold uppercase tracking-wider text-xs">FREE</span>
                 ) : (
-                  <span className="font-mono text-stone-900">${estShipping.toLocaleString()}</span>
+                  <span className="font-mono text-stone-900">{formatRM(estShipping)}</span>
                 )}
               </div>
               {estShipping > 0 && (
                 <p className="text-[10px] text-stone-400 italic">
-                  💡 Get free gourmet delivery by adding ${(1500 - subtotal).toLocaleString()} more value to your build!
+                  💡 Get free gourmet delivery by adding {formatRM(1500 - subtotal)} more value to your build!
                 </p>
               )}
             </div>
@@ -156,7 +157,7 @@ export const Cart: React.FC = () => {
             <div className="flex justify-between items-baseline pt-1">
               <span className="font-sans font-bold text-stone-800">Total Bill</span>
               <span className="font-serif text-2xl font-black text-stone-900">
-                ${orderTotal.toLocaleString()}
+                {formatRM(orderTotal)}
               </span>
             </div>
 

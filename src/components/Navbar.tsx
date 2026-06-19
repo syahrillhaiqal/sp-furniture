@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ShoppingBag, Menu, X } from 'lucide-react';
-import { useAppContext } from '../context/AppContext';
+import { useAppContext } from '../context/useAppContext';
 
 export const Navbar: React.FC = () => {
   const { cart, currentRoute, setRoute, adminLoggedIn, logout } = useAppContext();
@@ -9,7 +9,8 @@ export const Navbar: React.FC = () => {
   const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const navItems = [
-    { label: 'Browse Collection', route: 'home' },
+    { label: 'Home', route: 'home' },
+    { label: 'Showroom', route: 'showroom' },
     { label: 'Track Order', route: 'track' }
   ];
 
@@ -34,9 +35,6 @@ export const Navbar: React.FC = () => {
               <div>
                 <span className="block font-serif text-lg font-bold tracking-tight text-stone-900">
                   SP Home Furniture
-                </span>
-                <span className="block text-[10px] tracking-widest text-stone-500 uppercase font-mono">
-                  Enterprise • Est 1998
                 </span>
               </div>
             </button>

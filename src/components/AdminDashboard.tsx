@@ -16,8 +16,9 @@ import {
   ShoppingCart,
   Tag
 } from 'lucide-react';
-import { useAppContext } from '../context/AppContext';
+import { useAppContext } from '../context/useAppContext';
 import type { Product, OrderStatus, Order } from '../types';
+import { formatRM } from '../utils/currency';
 
 export const AdminDashboard: React.FC = () => {
   const {
@@ -35,6 +36,13 @@ export const AdminDashboard: React.FC = () => {
     logout,
     setRoute
   } = useAppContext();
+
+  const adminTabs = [
+    { id: 'reports', label: 'Business Reports & Metrics', icon: BarChart3 },
+    { id: 'products', label: 'Product Catalog Editor', icon: Tag },
+    { id: 'inventory', label: 'Showroom Stock Levels', icon: Boxes },
+    { id: 'orders', label: 'Customer Order Pipeline', icon: ClipboardList }
+  ] as const;
 
   // Dialog & Form states
   const [showProductForm, setShowProductForm] = useState(false);
@@ -218,19 +226,14 @@ export const AdminDashboard: React.FC = () => {
           </div>
 
           <div className="p-2 space-y-1">
-            {[
-              { id: 'reports', label: 'Business Reports & Metrics', icon: BarChart3 },
-              { id: 'products', label: 'Product Catalog Editor', icon: Tag },
-              { id: 'inventory', label: 'Showroom Stock Levels', icon: Boxes },
-              { id: 'orders', label: 'Customer Order Pipeline', icon: ClipboardList }
-            ].map((tab) => {
+            {adminTabs.map((tab) => {
               const TabIcon = tab.icon;
               const isActive = adminTab === tab.id;
 
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setAdminTab(tab.id as any)}
+                  onClick={() => setAdminTab(tab.id)}
                   className={`w-full text-left font-sans text-xs font-semibold uppercase tracking-wider py-3.5 px-4 rounded-lg flex items-center justify-between transition-all cursor-pointer ${
                     isActive
                       ? 'bg-amber-800 text-white shadow-sm font-semibold'
@@ -286,7 +289,7 @@ export const AdminDashboard: React.FC = () => {
                     <DollarSign size={16} className="text-stone-500" />
                   </div>
                   <div className="text-2xl font-serif font-black text-stone-904">
-                    ${grossSales.toLocaleString()}
+                    {formatRM(grossSales)}
                   </div>
                   <p className="text-[10px] text-emerald-600 font-bold">
                     🚀 Fully calculated gross aggregate
@@ -328,7 +331,7 @@ export const AdminDashboard: React.FC = () => {
                     <TrendingUp size={16} className="text-stone-500" />
                   </div>
                   <div className="text-2xl font-serif font-black text-stone-900">
-                    ${avgOrderValue.toLocaleString()}
+                    {formatRM(avgOrderValue)}
                   </div>
                   <p className="text-[10px] text-emerald-600 font-bold">
                     Consistent performance index
@@ -359,7 +362,7 @@ export const AdminDashboard: React.FC = () => {
                       <div key={cat} className="space-y-1.5">
                         <div className="flex justify-between text-xs">
                           <span className="font-semibold text-stone-700">{cat} Collection</span>
-                          <span className="font-mono font-bold text-stone-900">${salesAmount.toLocaleString()}</span>
+                          <span className="font-mono font-bold text-stone-900">{formatRM(salesAmount)}</span>
                         </div>
                         <div className="w-full bg-stone-100 h-6.5 rounded overflow-hidden flex items-center pr-2">
                           <div
@@ -399,7 +402,7 @@ export const AdminDashboard: React.FC = () => {
                           <td className="py-2.5 font-mono font-bold text-amber-900 select-all">{o.id}</td>
                           <td className="py-2.5 font-semibold text-stone-800">{o.customer.name}</td>
                           <td className="py-2.5 font-mono text-stone-400">{new Date(o.createdAt).toLocaleDateString()}</td>
-                          <td className="py-2.5 font-bold font-mono">${o.totalAmount.toLocaleString()}</td>
+                          <td className="py-2.5 font-bold font-mono">{formatRM(o.totalAmount)}</td>
                           <td className="py-2.5 text-right font-medium text-stone-700">
                             <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
                               o.status === 'Completed'
@@ -465,7 +468,7 @@ export const AdminDashboard: React.FC = () => {
                           {prod.name}
                         </h4>
                         <div className="font-mono text-xs font-bold text-amber-900 mt-1">
-                          Base: ${prod.price.toLocaleString()}
+                          Base: {formatRM(prod.price)}
                         </div>
                         <p className="text-[11px] text-stone-400 truncate mt-0.5">{prod.description}</p>
                       </div>
@@ -526,7 +529,7 @@ export const AdminDashboard: React.FC = () => {
                           <label className="block font-bold text-stone-700 uppercase tracking-wider font-mono">Category</label>
                           <select
                             value={formCategory}
-                            onChange={(e) => setFormCategory(e.target.value as any)}
+                            onChange={(e) => setFormCategory(e.target.value as Product['category'])}
                             className="w-full rounded border border-stone-300 p-2 text-sm bg-white"
                           >
                             <option value="Living Room">Living Room</option>
@@ -539,7 +542,7 @@ export const AdminDashboard: React.FC = () => {
 
                         {/* Price */}
                         <div className="space-y-1.5 col-span-1">
-                          <label className="block font-bold text-stone-700 uppercase tracking-wider font-mono">Base Price ($)</label>
+                          <label className="block font-bold text-stone-700 uppercase tracking-wider font-mono">Base Price (RM)</label>
                           <input
                             type="number"
                             value={formPrice}
@@ -813,7 +816,7 @@ export const AdminDashboard: React.FC = () => {
                         <div>
                           <span className="font-bold text-stone-400 font-mono uppercase text-[9px] block">Finance Snap</span>
                           <span className="font-serif font-black text-stone-900 text-base mt-0.5 block">
-                            ${o.totalAmount.toLocaleString()}
+                            {formatRM(o.totalAmount)}
                           </span>
                           <span className="text-[10px] text-stone-500 italic block mt-0.5">Paid via {o.customer.paymentMethod}</span>
                         </div>

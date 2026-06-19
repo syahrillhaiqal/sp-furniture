@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ArrowLeft, CheckCircle2, Copy, FileText, ChevronRight } from 'lucide-react';
-import { useAppContext } from '../context/AppContext';
+import { useAppContext } from '../context/useAppContext';
 import type { CustomerDetails, Order } from '../types';
+import { formatRM } from '../utils/currency';
 
 export const Checkout: React.FC = () => {
   const { cart, createOrder, setRoute } = useAppContext();
@@ -126,14 +127,14 @@ export const Checkout: React.FC = () => {
                       {item.selectedFabric && <span>• {item.selectedFabric.name}</span>}
                     </div>
                   </div>
-                  <span className="font-mono font-bold text-stone-700">${item.totalPrice.toLocaleString()}</span>
+                  <span className="font-mono font-bold text-stone-700">{formatRM(item.totalPrice)}</span>
                 </div>
               ))}
             </div>
 
             <div className="pt-2 flex justify-between items-baseline text-sm font-semibold text-stone-800 border-t border-stone-100">
               <span>Total Bill (Incl. Shipping)</span>
-              <span className="font-serif font-black text-amber-900">${confirmedOrder.totalAmount.toLocaleString()}</span>
+              <span className="font-serif font-black text-amber-900">{formatRM(confirmedOrder.totalAmount)}</span>
             </div>
           </div>
 
@@ -146,7 +147,7 @@ export const Checkout: React.FC = () => {
               <ChevronRight size={15} />
             </button>
             <button
-              onClick={() => setRoute('home')}
+              onClick={() => setRoute('showroom')}
               className="px-6 py-3 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold rounded-lg text-sm transition-all cursor-pointer"
             >
               Back to Showroom Homepage
@@ -163,7 +164,7 @@ export const Checkout: React.FC = () => {
       <div className="max-w-3xl mx-auto px-4 py-16 text-center">
         <h2 className="text-xl font-bold font-serif text-stone-800">Your cart has no active items</h2>
         <button
-          onClick={() => setRoute('home')}
+          onClick={() => setRoute('showroom')}
           className="mt-4 px-4 py-2 bg-stone-950 text-white rounded text-sm cursor-pointer hover:bg-stone-800"
         >
           Return to Showroom
@@ -304,7 +305,7 @@ export const Checkout: React.FC = () => {
             type="submit"
             className="w-full bg-stone-900 hover:bg-amber-800 text-white font-bold py-3.5 px-4 rounded-lg flex items-center justify-center space-x-2 shadow transition-all duration-300 cursor-pointer text-sm tracking-wide"
           >
-            <span>Lock Build Order • ${orderTotal.toLocaleString()}</span>
+            <span>Lock Build Order • {formatRM(orderTotal)}</span>
           </button>
         </form>
 
@@ -337,7 +338,7 @@ export const Checkout: React.FC = () => {
                 </div>
                 <div className="shrink-0 text-right">
                   <span className="block font-mono text-xs font-bold text-stone-900">
-                    ${item.totalPrice.toLocaleString()}
+                    {formatRM(item.totalPrice)}
                   </span>
                 </div>
               </div>
@@ -347,19 +348,19 @@ export const Checkout: React.FC = () => {
           <div className="divide-y divide-stone-200 pt-3 border-t border-stone-200 space-y-2 text-xs text-stone-600">
             <div className="flex justify-between">
               <span>Items Total</span>
-              <span className="font-mono text-stone-800 font-semibold">${subtotal.toLocaleString()}</span>
+              <span className="font-mono text-stone-800 font-semibold">{formatRM(subtotal)}</span>
             </div>
             <div className="flex justify-between pt-2">
               <span>Premium Furniture Carriage</span>
               {estShipping === 0 ? (
                 <span className="text-emerald-700 font-bold uppercase text-[10px]">Free Delivery</span>
               ) : (
-                <span className="font-mono text-stone-800 font-semibold">${estShipping.toLocaleString()}</span>
+                <span className="font-mono text-stone-800 font-semibold">{formatRM(estShipping)}</span>
               )}
             </div>
             <div className="flex justify-between pt-3 font-serif text-base font-black text-stone-900">
               <span>Total Price</span>
-              <span>${orderTotal.toLocaleString()}</span>
+              <span>{formatRM(orderTotal)}</span>
             </div>
           </div>
         </div>

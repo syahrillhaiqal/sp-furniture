@@ -1,0 +1,1 @@
+export const formatRM = (value: number) => `RM ${value.toLocaleString()}`;
