@@ -7,7 +7,7 @@ import {
   ChevronRight, 
   ShieldCheck, 
   Lock, 
-  CreditCard 
+  ShoppingCart
 } from 'lucide-react';
 import { useAppContext } from '../context/useAppContext';
 import type { CustomerDetails, Order } from '../types';
