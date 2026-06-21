@@ -119,7 +119,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Outdoor',
     price: 1890,
     description: 'Dine under open air. Handcrafted in sustainably certified high-oil aged teakwood, this dining collection handles heavy downpours or blistering ultraviolet sun rays to age into a beautiful silver-grey patina.',
-    image: 'https://images.unsplash.com/photo-1596244244153-c62482498e85?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1768527341685-0bbc641ccb9b?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     specs: {
       dimensions: 'Table - W: 72" x D: 36" x H: 30"; Chairs (4x) Included',
       material: 'Marine Grade Sustainably Sourced High-Oil Teak',
@@ -151,7 +151,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Dining Room',
     price: 1190,
     description: 'A long, streamlined storage piece with soft-close doors and balanced proportions for dining or gallery-style living spaces.',
-    image: 'https://images.unsplash.com/photo-1595514535215-4d6b3a2a3f17?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://plus.unsplash.com/premium_photo-1683141318297-75a3d8e86476?q=80&w=782&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     specs: {
       dimensions: 'W: 68" x D: 18" x H: 31"',
       material: 'American walnut veneer, engineered core, brushed brass pulls',
@@ -199,7 +199,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Office',
     price: 690,
     description: 'Designed for long sessions at the desk, this task chair blends mesh support, padded comfort, and a refined silhouette.',
-    image: 'https://images.unsplash.com/photo-1505797149-3b3c0f4d3c4f?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://images.unsplash.com/photo-1750306957820-f778b67c4e13?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     specs: {
       dimensions: 'W: 28" x D: 27" x H: 45"',
       material: 'Breathable mesh, aluminum base, molded lumbar support',
@@ -215,7 +215,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Outdoor',
     price: 2240,
     description: 'A weather-ready lounge group with modular seats, teak accents, and durable outdoor cushions for terraces and patios.',
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://images.unsplash.com/photo-1600210492090-a159ffa3aeaf?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     specs: {
       dimensions: 'Modular set: 2 seat units + corner + coffee table',
       material: 'Powder-coated aluminum, teak details, UV-resistant fabric',
@@ -249,7 +249,7 @@ export const INITIAL_ORDERS: Order[] = [
     customer: {
       name: 'Eleanor Vance',
       email: 'eleanor@example.com',
-      phone: '+1 456-7890',
+      phone: '+60 12 3456 789',
       address: '742 Chelsea Gardens, London, UK',
       paymentMethod: 'Credit/Debit Card'
     },
@@ -273,7 +273,7 @@ export const INITIAL_ORDERS: Order[] = [
     customer: {
       name: 'Aidan Gallagher',
       email: 'aidan.g@example.com',
-      phone: '+1 234-5678',
+      phone: '+60 11 7654 241',
       address: '102 Summit Ridge Lane, Seattle, WA',
       paymentMethod: 'Bank Transfer'
     },
@@ -296,7 +296,7 @@ export const INITIAL_ORDERS: Order[] = [
     customer: {
       name: 'Marcus Brody',
       email: 'marcus@example.com',
-      phone: '+1 891-1122',
+      phone: '+60 19 7744 111',
       address: '221B Baker St, London, UK',
       paymentMethod: 'Installment Plan'
     },
@@ -320,7 +320,7 @@ export const INITIAL_ORDERS: Order[] = [
     customer: {
       name: 'Sofia Alvarez',
       email: 'sofia.alvarez@example.com',
-      phone: '+1 713-3344',
+      phone: '+60 14 1554 941',
       address: '445 Sunset Blvd, Los Angeles, CA',
       paymentMethod: 'Credit/Debit Card'
     },

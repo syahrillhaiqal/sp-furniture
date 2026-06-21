@@ -244,11 +244,11 @@ export const ProductDetail: React.FC = () => {
                 </div>
 
                 {/* Fabric Selector */}
-                {product.category !== 'Dining Room' && product.category !== 'Outdoor' && (
+                {product.category !== 'Dining Room' && product.category !== 'Outdoor' && product.category !== 'Office' && (
                   <div>
                     <div className="flex flex-wrap justify-between items-baseline gap-2 mb-4">
                       <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-900">
-                        2. Upholstery
+                        2. Finishing
                       </h3>
                       <span className="text-xs text-stone-500 font-medium">
                         {selectedFabric.name} <span className="text-amber-700 ml-1">{selectedFabric.priceMod === 0 ? '(Included)' : `+${formatRM(selectedFabric.priceMod)}`}</span>

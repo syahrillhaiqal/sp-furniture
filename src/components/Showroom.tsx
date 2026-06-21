@@ -54,7 +54,7 @@ export const Showroom: React.FC = () => {
     {
       name: 'Outdoor',
       icon: Trees,
-      image: 'https://images.unsplash.com/photo-1596244244153-c62482498e85?auto=format&fit=crop&q=80&w=1200',
+      image: 'https://images.unsplash.com/photo-1600210492090-a159ffa3aeaf?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       blurb: 'Pieces that extend home into open air.'
     }
   ];

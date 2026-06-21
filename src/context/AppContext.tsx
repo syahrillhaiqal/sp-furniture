@@ -83,21 +83,12 @@ export interface AppContextType {
 }
 
 export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Try to load initial state or fallback to defaults
-  const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem('sph_products');
-    return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
-  });
+  // Always start from the source data so changes in src/data.ts are reflected on reload.
+  const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
 
-  const [inventory, setInventory] = useState<InventoryItem[]>(() => {
-    const saved = localStorage.getItem('sph_inventory');
-    return saved ? JSON.parse(saved) : INITIAL_INVENTORY;
-  });
+  const [inventory, setInventory] = useState<InventoryItem[]>(INITIAL_INVENTORY);
 
-  const [orders, setOrders] = useState<Order[]>(() => {
-    const saved = localStorage.getItem('sph_orders');
-    return saved ? JSON.parse(saved) : INITIAL_ORDERS;
-  });
+  const [orders, setOrders] = useState<Order[]>(INITIAL_ORDERS);
 
   const [cart, setCart] = useState<CartItem[]>([]);
   const [currentRoute, setCurrentRoute] = useState<string>(() => getRouteFromPathname(window.location.pathname));
