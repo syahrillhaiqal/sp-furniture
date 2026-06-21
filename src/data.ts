@@ -247,10 +247,10 @@ export const INITIAL_ORDERS: Order[] = [
   {
     id: 'ORD-9831',
     customer: {
-      name: 'Eleanor Vance',
+      name: 'Jamal Abdillah',
       email: 'eleanor@example.com',
       phone: '+60 12 3456 789',
-      address: '742 Chelsea Gardens, London, UK',
+      address: 'No. 12, Jalan Merpati 3, Taman Meru Jaya, 30020 Ipoh, Perak, Malaysia',
       paymentMethod: 'Credit/Debit Card'
     },
     items: [
@@ -271,10 +271,10 @@ export const INITIAL_ORDERS: Order[] = [
   {
     id: 'ORD-5542',
     customer: {
-      name: 'Aidan Gallagher',
+      name: 'Pakcik Mat',
       email: 'aidan.g@example.com',
       phone: '+60 11 7654 241',
-      address: '102 Summit Ridge Lane, Seattle, WA',
+      address: 'No. 45, Jalan Setia 2/8, Taman Setia Indah, 81100 Johor Bahru, Johor, Malaysia',
       paymentMethod: 'Bank Transfer'
     },
     items: [
@@ -294,10 +294,10 @@ export const INITIAL_ORDERS: Order[] = [
   {
     id: 'ORD-2109',
     customer: {
-      name: 'Marcus Brody',
+      name: 'Munir Albakri',
       email: 'marcus@example.com',
       phone: '+60 19 7744 111',
-      address: '221B Baker St, London, UK',
+      address: 'No. 8, Lorong Bukit Indah 5, Taman Bukit Indah, 43000 Kajang, Selangor, Malaysia',
       paymentMethod: 'Installment Plan'
     },
     items: [
@@ -318,10 +318,10 @@ export const INITIAL_ORDERS: Order[] = [
   {
     id: 'ORD-1087',
     customer: {
-      name: 'Sofia Alvarez',
+      name: 'Sofia Alovera',
       email: 'sofia.alvarez@example.com',
       phone: '+60 14 1554 941',
-      address: '445 Sunset Blvd, Los Angeles, CA',
+      address: 'No. 101, Jalan Bayan Baru 1, 11950 Bayan Lepas, Pulau Pinang, Malaysia',
       paymentMethod: 'Credit/Debit Card'
     },
     items: [
