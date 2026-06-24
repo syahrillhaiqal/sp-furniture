@@ -198,7 +198,7 @@ export const Checkout: React.FC = () => {
               onClick={() => setRoute('track')}
               className="px-6 py-3.5 bg-amber-800 hover:bg-amber-900 text-white font-bold rounded-lg text-sm transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-2 cursor-pointer"
             >
-              <span>Track Production Milestone</span>
+              <span>Track Your Order</span>
               <ChevronRight size={16} />
             </button>
             <button

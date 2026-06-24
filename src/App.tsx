@@ -81,8 +81,7 @@ const MainAppLayout: React.FC = () => {
                 Office Contacts
               </span>
               <p className="text-xs text-stone-500 leading-normal">
-                74 Luxury Showroom Avenue, Suite 100 <br />
-                Kuala Lumpur, Malaysia <br />
+                <br /> SP Home Furniture Enterprise, 08000 Sungai Petani, Kedah <br />
                 <span className="inline-block mt-2 font-mono font-bold text-stone-700">support@sphomefurniture.com</span>
               </p>
             </div>
