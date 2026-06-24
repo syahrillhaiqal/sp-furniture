@@ -348,9 +348,6 @@ export const Checkout: React.FC = () => {
                   <span className="w-6 h-6 rounded-full bg-stone-900 text-white text-xs flex items-center justify-center font-sans">2</span>
                   Payment Method
                 </h3>
-                <span className="flex items-center gap-1 text-[10px] font-bold text-stone-400 uppercase tracking-widest">
-                  <Lock size={12} /> 256-bit Encrypted
-                </span>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -383,13 +380,6 @@ export const Checkout: React.FC = () => {
                     </div>
                   </label>
                 ))}
-              </div>
-
-              <div className="mt-6 bg-stone-50 rounded-lg p-4 border border-stone-200 text-xs text-stone-500 leading-relaxed flex gap-3">
-                <ShieldCheck size={20} className="text-stone-400 shrink-0" />
-                <p>
-                  <strong>Prototype Simulation Note:</strong> Submission generates a real transaction simulation in the system registers. No actual charges will occur, but inventory levels will decrease dynamically.
-                </p>
               </div>
             </div>
 
